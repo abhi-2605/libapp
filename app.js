@@ -34,4 +34,4 @@ app.get('/', function(req, res) {
 
 });
 
-app.listen(port, () => { console.log('server is ready' + port) });
+app.listen(port);
