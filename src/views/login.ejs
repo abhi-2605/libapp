@@ -62,7 +62,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-7">
-                <form method="POST" action="/login/sumbit">
+                <!-- <form method="POST" action="/login/sumbit">
                     <h3>Username</h3>
                     <input type="username" placeholder="username" class="user">
                     <br>
@@ -71,6 +71,27 @@
                     <br>
                     <br>
                     <button>login</button>
+                </form> -->
+                <form method="POST" class="col-lg-8 upform" action="/login/account">
+                    <div class="mb-3">
+                        <label for="exampleInputUserName" class="form-label">Username</label>
+                        <input type="text" name="username" class="form-control" id="loginuser" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Password</label>
+                        <input type="password" name="password" class="form-control" id="loginpass" required>
+                    </div>
+                    <br>
+                    <div>
+                        <a href="/signup" id="accnt">I don't have an account ! SignUp</a>
+                    </div>
+                    <br>
+                    <div>
+                        <!-- <a href="/login/updatepasswd" id="accnt">Forgot Password ?</a> -->
+                    </div>
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-primary" id="up-btn">LogIn</button>
+                    </div>
                 </form>
             </div>
         </div>
