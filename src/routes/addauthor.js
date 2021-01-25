@@ -1,27 +1,26 @@
 const express = require('express');
-const adminrouter = express.Router();
-const Bookdata = require('../model/bookdata');
+const addauthor = express.Router();
+const Authordata = require('../model/authordata');
+
 const fs = require("fs");
 
 const upload = require("express-fileupload");
-adminrouter.use(upload());
+addauthor.use(upload());
 
-adminrouter.get('/', function(req, res) {
-    res.render("admin");
-
+addauthor.get('/', function(req, res) {
+    res.render("addauthor");
 })
-adminrouter.post('/add', function(req, res) {
 
-    // res.send("done");
+addauthor.post('/add', function(req, res) {
     var item = {
-        title: req.body.title, // now while using get method use req.query.... for acccesing the content from query
         author: req.body.author,
+        book: req.body.book,
         genre: req.body.genre,
         image: req.body.image,
+        about: req.body.about
     }
 
     if (req.files) {
-
         var file = req.files.image;
         var filename = req.files.image.name;
 
@@ -33,8 +32,14 @@ adminrouter.post('/add', function(req, res) {
         });
 
     }
-    var book = Bookdata(item);
-    book.save(); // for saving to database
-    res.redirect('/books');
+
+    // pass to AuthorSchema
+    var author = Authordata(item);
+
+    // save new author to Database
+    author.save();
+
+    // update Authors page
+    res.redirect("/author");
 })
-module.exports = adminrouter;
+module.exports = addauthor;
